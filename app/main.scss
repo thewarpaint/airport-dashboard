@@ -1,0 +1,106 @@
+@import 'flattastic-ui-theme';
+
+$color-ontime: $palette-grass-light;
+$color-ontime-dark: $palette-grass-dark;
+$color-delayed: $palette-sunflower-light;
+$color-delayed-dark: $palette-sunflower-dark;
+$color-boarding: $palette-aqua-light;
+$color-boarding-dark: $palette-aqua-dark;
+$color-cancelled: $palette-grapefruit-light;
+$color-cancelled-dark: $palette-grapefruit-dark;
+
+$color-striped: $palette-light-gray-dark;
+$color-table-border: $palette-light-gray-dark;
+$color-table-header: $palette-medium-gray-dark;
+$color-table-row-hover: $palette-light-gray-light;
+
+@mixin status($color, $color-dark) {
+  .col-flight .fa {
+    color: $color;
+    padding-right: 4px;
+  }
+
+  .col-flight span {
+    display: inline-block;
+    border-bottom: 2px solid $color;
+    padding: 2px 6px;
+  }
+
+  .col-status span {
+    background-color: $color;
+    text-shadow: 1px 1px 0px $color-dark;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+}
+
+table {
+  width: 100%;
+  font-size: 18px;
+  background-color: #ffffff;
+}
+
+#general table {
+  .col-status span {
+    display: inline-block;
+    width: 86px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  thead tr {
+    border-bottom: 2px solid $color-table-border;
+    color: $color-table-header;
+
+    th {
+      height: 48px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 18px;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $color-table-border;
+
+      &:hover {
+        background-color: $color-table-row-hover;
+      }
+
+      &.status-ontime {
+        @include status($color-ontime, $color-ontime-dark);
+      }
+
+      &.status-delayed {
+        @include status($color-delayed, $color-delayed-dark);
+      }
+
+      &.status-boarding {
+        @include status($color-boarding, $color-boarding-dark);
+      }
+
+      &.status-cancelled {
+        @include status($color-cancelled, $color-cancelled-dark);
+      }
+    }
+
+    td {
+      height: 100px;
+      text-align: center;
+
+      &.col-airline img {
+        max-width: 240px;
+        max-height: 70px;
+      }
+    }
+  }
+}

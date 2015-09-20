@@ -104,3 +104,54 @@ table {
     }
   }
 }
+
+/*
+ * Calendar Sheet UI component
+ */
+
+$color-calendar-sheet-light: #ffffff;
+$color-calendar-sheet-dark: $palette-dark-gray-light;
+
+$color-calendar-sheet-border: $palette-aqua-dark;
+$color-calendar-sheet-bg: $color-calendar-sheet-light;
+$color-calendar-sheet-fg: $color-calendar-sheet-dark;
+$color-calendar-sheet-month-bg: $palette-aqua-dark;
+$color-calendar-sheet-month-fg: $color-calendar-sheet-light;
+$color-calendar-sheet-dow-fg: $palette-medium-gray-dark;
+
+.calendar-sheet {
+  display: inline-block;
+  width: 72px;
+  border: 1px solid $color-calendar-sheet-border;
+  border-radius: 3px;
+  background-color: $color-calendar-sheet-bg;
+
+  > span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+    &.month, &.day-of-week {
+      font-size: 14px;
+      padding: 4px 0;
+    }
+
+    &.month {
+      text-transform: uppercase;
+      background-color: $color-calendar-sheet-month-bg;
+      color: $color-calendar-sheet-month-fg;
+    }
+
+    &.date {
+      font-size: 32px;
+      font-weight: bold;
+      padding: 4px 0 0;
+      color: $color-calendar-sheet-fg;
+    }
+
+    &.day-of-week {
+      color: $color-calendar-sheet-dow-fg;
+      padding: 0 0 6px;
+    }
+  }
+}

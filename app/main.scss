@@ -83,7 +83,7 @@ table {
     color: $color-h2;
   }
 
-  .calendar-sheet, .clock {
+  .qr-code, .calendar-sheet, .clock {
     flex: 0 0 auto;
     margin-right: 32px;
   }
@@ -150,6 +150,21 @@ table {
       }
     }
   }
+}
+
+/*
+ * QR Code UI component
+ */
+
+$qr-code-size: 110px;
+
+// SVG QR Code generated using https://qrcode.littleidiot.be/
+.qr-code {
+  display: inline-block;
+  width: $qr-code-size;
+  height: $qr-code-size;
+  background-image: url('../images/qr-code.svg');
+  background-size: cover;
 }
 
 /*

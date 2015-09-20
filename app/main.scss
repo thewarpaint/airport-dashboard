@@ -183,7 +183,7 @@ $color-calendar-sheet-dow-fg: $palette-medium-gray-dark;
 
 .calendar-sheet {
   display: inline-block;
-  width: 72px;
+  width: 66px;
   border: 1px solid $color-calendar-sheet-border;
   border-radius: 3px;
   background-color: $color-calendar-sheet-bg;
@@ -195,25 +195,26 @@ $color-calendar-sheet-dow-fg: $palette-medium-gray-dark;
 
     &.month, &.day-of-week {
       font-size: 14px;
-      padding: 4px 0;
     }
 
     &.month {
+      padding: 2px 0;
       text-transform: uppercase;
       background-color: $color-calendar-sheet-month-bg;
       color: $color-calendar-sheet-month-fg;
     }
 
     &.date {
+      padding: 4px 0 0;
+      line-height: 36px;
       font-size: 32px;
       font-weight: bold;
-      padding: 4px 0 0;
       color: $color-calendar-sheet-fg;
     }
 
     &.day-of-week {
       color: $color-calendar-sheet-dow-fg;
-      padding: 0 0 6px;
+      padding: 0 0 2px;
     }
   }
 }

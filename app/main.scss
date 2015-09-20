@@ -1,5 +1,8 @@
 @import 'flattastic-ui-theme';
 
+/*
+ * Statuses
+ */
 $color-ontime: $palette-grass-light;
 $color-ontime-dark: $palette-grass-dark;
 $color-delayed: $palette-sunflower-light;
@@ -9,10 +12,17 @@ $color-boarding-dark: $palette-aqua-dark;
 $color-cancelled: $palette-grapefruit-light;
 $color-cancelled-dark: $palette-grapefruit-dark;
 
+$color-bg: $palette-light-gray-light;
+$color-h1: $palette-dark-gray-dark;
+$color-h2: $palette-dark-gray-light;
 $color-striped: $palette-light-gray-dark;
 $color-table-border: $palette-light-gray-dark;
 $color-table-header: $palette-medium-gray-dark;
 $color-table-row-hover: $palette-light-gray-light;
+
+/*
+ * Mixins
+ */
 
 @mixin status($color, $color-dark) {
   .col-flight .fa {
@@ -32,18 +42,51 @@ $color-table-row-hover: $palette-light-gray-light;
   }
 }
 
+/*
+ * General styles
+ */
+
 html, body {
   height: 100%;
 }
 
 body {
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  background-color: $color-bg;
 }
 
 table {
   width: 100%;
   font-size: 18px;
   background-color: #ffffff;
+}
+
+#top {
+  display: flex;
+  align-items: center;
+
+  header {
+    flex: 1 0 auto;
+    margin-left: 32px;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size: 36px;
+    letter-spacing: 2px;
+    color: $color-h1;
+  }
+
+  h2 {
+    margin-top: 8px;
+    color: $color-h2;
+  }
+
+  .calendar-sheet, .clock {
+    flex: 0 0 auto;
+    margin-right: 32px;
+  }
 }
 
 #general table {
@@ -61,7 +104,7 @@ table {
     color: $color-table-header;
 
     th {
-      height: 48px;
+      height: 56px;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 18px;
@@ -71,6 +114,10 @@ table {
   tbody {
     tr {
       border-bottom: 1px solid $color-table-border;
+
+      &:last-child {
+        border-bottom: none;
+      }
 
       &:hover {
         background-color: $color-table-row-hover;

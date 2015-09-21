@@ -42,6 +42,36 @@ $color-table-row-hover: $palette-light-gray-light;
   }
 }
 
+@mixin th {
+  height: 56px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@mixin thead-tr {
+  border-bottom: 2px solid $color-table-border;
+  color: $color-table-header;
+}
+
+@mixin col-airline-img {
+  max-width: 240px;
+  max-height: 70px;
+}
+
+@mixin tr {
+  border-bottom: 1px solid $color-table-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $color-table-row-hover;
+  }
+}
+
 /*
  * General styles
  */
@@ -90,38 +120,17 @@ table {
 }
 
 #general table {
-  .col-status span {
-    display: inline-block;
-    width: 86px;
-    padding: 4px 6px;
-    border-radius: 3px;
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-
   thead tr {
-    border-bottom: 2px solid $color-table-border;
-    color: $color-table-header;
+    @include thead-tr;
 
     th {
-      height: 56px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 18px;
+      @include th;
     }
   }
 
   tbody {
     tr {
-      border-bottom: 1px solid $color-table-border;
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      &:hover {
-        background-color: $color-table-row-hover;
-      }
+      @include tr;
 
       &.status-ontime {
         @include status($color-ontime, $color-ontime-dark);
@@ -145,11 +154,21 @@ table {
       text-align: center;
 
       &.col-airline img {
-        max-width: 240px;
-        max-height: 70px;
+        @include col-airline-img;
       }
     }
   }
+}
+
+// Common
+
+.col-status span {
+  display: inline-block;
+  width: 90px;
+  padding: 4px 6px;
+  border-radius: 3px;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 /*
@@ -229,4 +248,85 @@ $color-clock-text: $palette-dark-gray-light;
   font-size: 48px;
   font-weight: bold;
   color: $color-clock-text;
+}
+
+/*
+ * Flex Table UI component
+ */
+
+.flex-table {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  background-color: #ffffff;
+  margin: 20px 16px;
+  border: 1px solid $color-table-border;
+  border-radius: 3px;
+  font-size: 18px;
+
+  .flex-table-row {
+    @include tr;
+
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    &.flex-table-header {
+      @include th;
+      @include thead-tr;
+
+      min-height: auto;
+
+      &:hover {
+        background-color: #ffffff;
+      }
+    }
+
+    &.status-ontime {
+      @include status($color-ontime, $color-ontime-dark);
+    }
+
+    &.status-delayed {
+      @include status($color-delayed, $color-delayed-dark);
+    }
+
+    &.status-boarding {
+      @include status($color-boarding, $color-boarding-dark);
+    }
+
+    &.status-cancelled {
+      @include status($color-cancelled, $color-cancelled-dark);
+    }
+
+    .flex-table-data {
+      text-align: center;
+
+      &.col-airline {
+        flex: 0 0 30%;
+
+        img {
+          width: 90%;
+          @include col-airline-img;
+        }
+      }
+
+      &.col-flight, &.col-departure {
+        flex: 0 0 12%;
+      }
+
+      &.col-destination {
+        flex: 0 0 22%;
+      }
+
+      &.col-gate {
+        flex: 0 0 10%;
+      }
+
+      &.col-status {
+        flex: 0 0 14%;
+      }
+    }
+  }
 }

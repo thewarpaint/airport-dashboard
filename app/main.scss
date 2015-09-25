@@ -1,5 +1,8 @@
 @import 'flattastic-ui-theme';
 
+$screen-xs-max: 768px;
+$screen-sm-max: 992px;
+
 /*
  * Statuses
  */
@@ -110,6 +113,7 @@ table {
 
   h2 {
     margin-top: 8px;
+    font-size: 24px;
     color: $color-h2;
   }
 
@@ -120,6 +124,8 @@ table {
 }
 
 #general table {
+  display: none;
+
   thead tr {
     @include thead-tr;
 
@@ -212,6 +218,10 @@ $color-calendar-sheet-dow-fg: $palette-medium-gray-dark;
     width: 100%;
     text-align: center;
 
+    &.full-date {
+      display: none;
+    }
+
     &.month, &.day-of-week {
       font-size: 14px;
     }
@@ -252,6 +262,7 @@ $color-clock-text: $palette-dark-gray-light;
 
 /*
  * Flex Table UI component
+ * Inspired by http://inlehmansterms.net/2014/10/11/responsive-tables-with-flexbox/
  */
 
 .flex-table {
@@ -259,7 +270,7 @@ $color-clock-text: $palette-dark-gray-light;
   flex-flow: column nowrap;
   justify-content: space-between;
   background-color: #ffffff;
-  margin: 20px 16px;
+  margin: 0 16px 16px;
   border: 1px solid $color-table-border;
   border-radius: 3px;
   font-size: 18px;
@@ -326,6 +337,119 @@ $color-clock-text: $palette-dark-gray-light;
 
       &.col-status {
         flex: 0 0 14%;
+      }
+    }
+  }
+}
+
+// Small screen and lower fixes
+@media (max-width: $screen-sm-max) {
+  #top {
+    header {
+      margin-left: 16px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    .clock {
+      margin-right: 16px;
+      font-size: 32px;
+    }
+  }
+
+  .qr-code {
+    display: none;
+  }
+
+  .calendar-sheet {
+    width: auto;
+    border: none;
+    border-radius: 0;
+    background-color: inherit;
+    color: $palette-dark-gray-light;
+
+    > span {
+      display: none;
+
+      &.full-date {
+        display: block;
+      }
+    }
+  }
+
+  .flex-table {
+    &, .flex-table-row.flex-table-header {
+      font-size: 16px;
+    }
+
+    .flex-table-row {
+      .flex-table-data {
+        &.col-airline {
+          flex: 0 0 20%;
+
+          img {
+            width: 80%;
+          }
+        }
+
+        &.col-flight, &.col-departure {
+          flex: 0 0 14%;
+        }
+
+        &.col-destination {
+          flex: 0 0 24%;
+        }
+
+        &.col-gate {
+          flex: 0 0 12%;
+        }
+
+        &.col-status {
+          flex: 0 0 16%;
+        }
+      }
+    }
+  }
+}
+
+// X-Small screen fixes
+@media (max-width: $screen-xs-max) {
+  #top {
+    header {
+      flex: 1 1 auto;
+    }
+  }
+
+  .calendar-sheet {
+    display: none;
+  }
+
+
+  .flex-table {
+    .flex-table-row {
+      flex-flow: column nowrap;
+      min-height: auto;
+      padding: 12px 0;
+
+      &.flex-table-header {
+        display: none;
+      }
+
+      .flex-table-data {
+        margin-bottom: 9px;
+
+        &.col-airline {
+          img {
+            width: auto;
+            height: 36px;
+          }
+        }
       }
     }
   }

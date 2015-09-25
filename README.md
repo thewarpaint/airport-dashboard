@@ -1,3 +1,7 @@
-# Airline Dashboard!
+# Airport Dashboard!
 
 Coming soon...
+
+## License
+
+[MIT](LICENSE)

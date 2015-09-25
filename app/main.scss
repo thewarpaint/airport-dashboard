@@ -433,7 +433,7 @@ $color-clock-text: $palette-dark-gray-light;
 
   .flex-table {
     .flex-table-row {
-      flex-flow: column nowrap;
+      display: block;
       min-height: auto;
       padding: 12px 0;
 
